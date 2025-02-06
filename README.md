@@ -16,9 +16,7 @@
 
 ## セットアップ
 
-### 前提
-
-下記がローカルマシンにインストールされていること。
+前提として、下記がローカルマシンにインストールされていること。
 
 - [Rust](https://www.rust-lang.org/tools/install)
 - [Docker Compose](https://docs.docker.com/compose/install/)
@@ -36,8 +34,11 @@ cargo build
 docker-compose up --build
 ```
 
-## 動作チェック
+## 各コマンド
 
 ```sh
-curl http://localhost:8080/
+curl http://localhost:8080/ # 動作チェック
+# backend直下
+cargo watch -x run
+cargo run
 ```

@@ -11,6 +11,7 @@
 │   ├── Dockerfile
 │   └── src
 │       └── main.rs
+├── db
 └── docker-compose.yml
 ```
 

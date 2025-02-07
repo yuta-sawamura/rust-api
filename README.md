@@ -1,5 +1,7 @@
 # rust-api
 
+このプロジェクトは、Rust を用いた API サーバーのサンプル実装です。
+
 ## ディレクトリ構成
 
 ```
@@ -10,45 +12,51 @@
 │   ├── Cargo.toml
 │   ├── Dockerfile
 │   └── src
-│       └── main.rs         // アプリケーションエントリーポイント。サーバ起動・ミドルウェア設定等
-|       ├── config.rs       // 設定情報（例：環境変数やポート番号等）の定義
-|       ├── db.rs           // DB接続やコネクションプールの初期化
-|       ├── models          // データ構造の定義
-|       │   └── task.rs     // Todoタスクのモデル定義（例：struct Task）
-|       ├── handlers        // 各CRUD操作のハンドラ関数
-|       │   └── task.rs     // タスクに関する処理（一覧取得、作成、更新、削除など）
-|       └── routes          // ルーティングの定義
-|           └── task.rs     // エンドポイントと対応するハンドラのマッピング
+│       └── main.rs
 ├── db
 │   └── init.sql
 └── docker-compose.yml
 ```
 
-## セットアップ
+## 前提条件
 
-前提として、下記がローカルマシンにインストールされていること。
+このプロジェクトをセットアップする前に、下記のツールがローカルマシンにインストールされている必要があります。
 
 - [Rust](https://www.rust-lang.org/tools/install)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
-1. Rust の依存関係をインストールする
+## セットアップ手順
+
+### 1. Rust の依存関係をインストールする
+
+まず、`backend` ディレクトリに移動し、以下のコマンドを実行してください。
 
 ```sh
 cd backend
 cargo build
 ```
 
-2. Docker コンテナをビルドして起動する
+### 2. Docker コンテナをビルドして起動する
 
 ```sh
 docker-compose up --build
 ```
 
-## 各コマンド
+## 各種コマンド
+
+backend ディレクトリ直下で、以下のコマンドが利用できます。
 
 ```sh
-curl http://localhost:8080/ # 動作チェック
-# backend直下
 cargo watch -x run
 cargo run
+```
+
+## API エンドポイント
+
+```sh
+curl http://localhost:8080/tasks # タスク一覧の取得
+curl http://localhost:8080/tasks/1 # 特定タスクの取得 (例: ID = 1)
+curl -X POST http://localhost:8080/tasks # タスクの作成
+curl -X PUT http://localhost:8080/tasks/1 # タスクの更新 (例: ID = 1)
+curl -X DELETE http://localhost:8080/tasks/1 # タスクの削除 (例: ID = 1)
 ```

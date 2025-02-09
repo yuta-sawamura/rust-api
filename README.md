@@ -10,7 +10,6 @@
 ├── backend
 │   ├── Cargo.lock
 │   ├── Cargo.toml
-│   ├── Dockerfile
 │   └── src
 │       └── main.rs
 ├── db
@@ -27,27 +26,18 @@
 
 ## セットアップ手順
 
-### 1. Rust の依存関係をインストールする
-
-まず、`backend` ディレクトリに移動し、以下のコマンドを実行してください。
-
-```sh
-cd backend
-cargo build
-```
-
-### 2. Docker コンテナをビルドして起動する
+### 1. Docker コンテナをビルドし、起動する
 
 ```sh
 docker-compose up --build
 ```
 
-## 各種コマンド
+### 2. Rust を起動する
 
-backend ディレクトリ直下で、以下のコマンドが利用できます。
+まず、`backend` ディレクトリに移動し、以下のコマンドを実行してください。
 
 ```sh
-cargo watch -x run
+cd backend
 cargo run
 ```
 
